@@ -226,15 +226,14 @@ export class ReservationUsecase {
         storeId: storeId,
         reservations: {
           none: {
-            startTime: {
-              gte: dayjs(date + startTime).toDate(),
-              lte: dayjs(date + startTime)
-                .set('minute', reservationType.defaultMinutes)
-                .toDate(),
-            },
             AND: {
+              startTime: {
+                lt: dayjs(date + startTime)
+                  .add(reservationType.defaultMinutes, 'minute')
+                  .toDate(),
+              },
               endTime: {
-                gte: dayjs(date + startTime).toDate(),
+                gt: dayjs(date + startTime).toDate(),
               },
             },
           },

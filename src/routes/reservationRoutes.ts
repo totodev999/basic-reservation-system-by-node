@@ -86,8 +86,6 @@ router.get('/', async (req, res) => {
 // 予約作成
 router.post('/', async (req, res) => {
   try {
-    console.log(req.body);
-    console.log(dayjs(req.body.date).isBefore(dayjs()));
     const requestObj = z.object({
       body: z
         .object({
