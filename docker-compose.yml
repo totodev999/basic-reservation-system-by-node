@@ -1,0 +1,16 @@
+version: '3.9'
+services:
+  postgres:
+    image: postgres:15
+    container_name: postgres15-container
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: reservation-sample
+    volumes:
+      - reservation-sample:/var/lib/postgresql/data
+
+volumes:
+  reservation-sample:
